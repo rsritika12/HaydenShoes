@@ -1,0 +1,85 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 300px; height: 400px; margin: 0 auto"></div>
+
+
+
+
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Most popular shoe'
+        },
+        
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Shoes (thousands)'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        
+        series: [{
+            name: 'Shoes sold',
+            data: [
+                ['Heels', 50],
+                ['Flats', 30],
+                ['Sneakers', 20],
+                ['Boots', 14],
+                ['Rain boots', 12],
+                ['Sandals', 60],
+                ['Flip flops', 30],
+                ['Running Shoes', 11],
+                ['Riding Shoes', 11],
+                ['Ballet shoes', 10],
+                ['High-top', 10],
+                ['Dress shoes', 40],
+                ['Moccasins', 20],
+                ['Saddle Shoes', 9],
+                ['Slippers', 9],
+                ['Tennis Shoes', 9],
+                ['Wedges', 80],
+                ['Sling-backs', 8],
+                ['Stilettos', 8],
+                ['Loafers', 8], 
+                ['Work boots', 8],
+                ['Pumps', 40],
+                ['Leather shoes', 10],
+                ['Open-toes', 20]
+            ],
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        }]
+    });
+});
+
+
+
+

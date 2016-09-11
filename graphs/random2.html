@@ -1,0 +1,54 @@
+<!-- charity -->
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Charitable Donations'
+        },
+        xAxis: {
+            categories: [
+                '2012',
+                '2013',
+                '2014',
+                '2015',
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Shoes (thousands)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Shoes sold',
+            data: [200, 600, 900, 1200]
+
+        }, {
+            name: 'Shoes to charity',
+            data: [60, 110, 190,300]
+        }]
+    });
+});

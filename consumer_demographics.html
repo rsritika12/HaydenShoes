@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="description" content="Dashboard for Hayden Shoes">
+  <meta name="author" content="Team 2">
+  <meta name="keywords" content="HTML, 67-250, Term Project, Hayden Shoes, Data analytics">
+  <title>Hayden Shoes</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><img src="images/brand_logo.png" alt="Brand Logo"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sales.html">Sales</a></li>
+        <li><a href="consumer_demographics.html">Consumer Demographics</a></li>
+        <li><a href="charity.html">Charity</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="sales.html">Sales</a></li>
+        <li><a href="consumer_demographics.html">Consumer Demographics</a></li>
+        <li><a href="charity.html">Charity</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Hayden Shoes</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Consumer Demographics</h5>
+      </div>
+
+      <div id="graph1">
+        <!-- first graph -->
+      </div>
+      <br><br>
+
+      <div id="graph2">
+        <!-- second graph -->
+      </div>
+      <br><br>
+
+      <div id="graph3">
+        <!-- third graph -->
+      </div>
+
+      <br><br>
+    </div>
+  </div>
+
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. We are doing this for our Term Project in 67-250, Information Systems Mileux.</p>
+        </div>
+        
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect with us!</h5>
+            <ul>
+              <a href="https://www.facebook.com/">
+              <img src="images/facebook.png" alt="Facebook Profile">
+              </a>
+              <a href="https://twitter.com/">
+                  <img src="images/twitter.png" alt="Twitter Profile">
+              </a>
+              <a href="https://www.instagram.com/">
+                  <img src="images/instagram.png" alt="Instagram Profile">
+              </a>
+              <a href="mailto:sbhotika@andrew.cmu.edu">
+                <img src="images/email.png" alt="Email">
+              </a>
+            </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  <script type="text/javascript" src="js/highcharts.js"></script>
+  <script type="text/javascript" src="js/modules/exporting.js"></script>
+
+  <script>
+    $(function () {
+
+    var colors = Highcharts.getOptions().colors,
+        categories = ['Ages 0-18', '18-28', '28-38', '38-48', '48+'],
+        data = [{
+            y: 20.2,
+            color: colors[0],
+            drilldown: {
+                name: 'Customers of Age 0-18',
+                categories: ['Male', 'Female'],
+                data: [10.73, 9.47],
+                color: colors[0]
+            }
+        }, {
+            y: 25.6,
+            color: colors[1],
+            drilldown: {
+                name: 'Customers of Age 18-28',
+                categories: ['Male', 'Female'],
+                data: [10.96, 14.64],
+                color: colors[1]
+            }
+        }, {
+            y: 10.1,
+            color: colors[2],
+            drilldown: {
+                name: 'Customers of Age 28-38',
+                categories: ['Male', 'Female'],
+                data: [4.60, 5.51],
+                color: colors[2]
+            }
+        }, {
+            y: 4.5,
+            color: colors[3],
+            drilldown: {
+                name: 'Customers of Ages 38-48',
+                categories: ['Male', 'Female'],
+                data: [2.84, 1.66],
+                color: colors[3]
+            }
+        }, {
+            y: 1.7,
+            color: colors[4],
+            drilldown: {
+                name: 'Customers of Ages 48+',
+                categories: ['Male', 'Female'],
+                data: [1.32, 0.38],
+                color: colors[4]
+            }
+        }, {
+            y: 0.0,
+            color: colors[5],
+            drilldown: {
+                name: 'Proprietary or Undetectable',
+                categories: [],
+                data: [],
+                color: colors[5]
+            }
+        }],
+        browserData = [],
+        versionsData = [],
+        i,
+        j,
+        dataLen = data.length,
+        drillDataLen,
+        brightness;
+
+
+    // Build the data arrays
+    for (i = 0; i < dataLen; i += 1) {
+
+        // add browser data
+        browserData.push({
+            name: categories[i],
+            y: data[i].y,
+            color: data[i].color
+        });
+
+        // add version data
+        drillDataLen = data[i].drilldown.data.length;
+        for (j = 0; j < drillDataLen; j += 1) {
+            brightness = 0.2 - (j / drillDataLen) / 5;
+            versionsData.push({
+                name: data[i].drilldown.categories[j],
+                y: data[i].drilldown.data[j],
+                color: Highcharts.Color(data[i].color).brighten(brightness).get()
+            });
+        }
+    }
+
+    // Create the chart
+    $('#graph1').highcharts({
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Hayden Customer Segmentation'
+        },
+        subtitle: {
+            text: 'By Age and Gender'
+        },
+        yAxis: {
+            title: {
+                text: 'Total percent market share'
+            }
+        },
+        plotOptions: {
+            pie: {
+                shadow: false,
+                center: ['50%', '50%']
+            }
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        series: [{
+            name: 'Browsers',
+            data: browserData,
+            size: '60%',
+            dataLabels: {
+                formatter: function () {
+                    return this.y > 5 ? this.point.name : null;
+                },
+                color: '#ffffff',
+                distance: -30
+            }
+        }, {
+            name: 'Versions',
+            data: versionsData,
+            size: '80%',
+            innerSize: '60%',
+            dataLabels: {
+                formatter: function () {
+                    // display only if larger than 1
+                    return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
+                }
+              }
+          }]
+      });
+  });
+  </script>
+
+  <script>
+    $(function () {
+        $('#graph2').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '% Online Customers by Age Group'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: ['Ages 0-18', 'Ages 18-28', 'Ages 28-38', 'Ages 38-48', 'Ages 48+']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Sale Type by Percentage'
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+            series: [{
+                name: 'Online Customers',
+                data: [35.3, 49.2, 7.1, 4.7, 3.7]
+            }, {
+                name: 'In-Store Customers',
+                data: [100-35.3, 100-49.2, 100-7.1, 100-4.7, 100-3.7]
+            }, ]
+        });
+    });
+    </script>
+
+    <script>
+      $(function () {
+
+        // Radialize the colors
+        Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
+            return {
+                radialGradient: {
+                    cx: 0.5,
+                    cy: 0.3,
+                    r: 0.7
+                },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                ]
+            };
+        });
+
+        // Build the chart
+        $('#graph3').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: '% Total Customers, April 2015 to April 2016'
+            },
+            subtitle: {
+                text: 'by Age Group'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        },
+                        connectorColor: 'silver'
+                    }
+                }
+            },
+            series: [{
+                name: '% of All Customers',
+                data: [
+                    { name: 'Ages 0-18', y: 22.3 },
+                    { name: 'Ages 18-28 ', y: 45.1 },
+                    { name: 'Ages 28-38 ', y: 15.3 },
+                    { name: 'Ages 38-48 ', y: 10.1 },
+                    { name: 'Ages 48+ ', y: 7.2 }
+                ]
+            }]
+        });
+    });
+    </script>
+
+  </body>
+</html>

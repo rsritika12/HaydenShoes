@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="description" content="Dashboard for Hayden Shoes">
+  <meta name="author" content="Team 2">
+  <meta name="keywords" content="HTML, 67-250, Term Project, Hayden Shoes, Data analytics">
+  <title>Hayden Shoes</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><img src="images/brand_logo.png" alt="Brand Logo"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sales.html">Sales</a></li>
+        <li><a href="consumer_demographics.html">Consumer Demographics</a></li>
+        <li><a href="charity.html">Charity</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="sales.html">Sales</a></li>
+        <li><a href="consumer_demographics.html">Consumer Demographics</a></li>
+        <li><a href="charity.html">Charity</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Hayden Shoes</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Charity</h5>
+      </div>
+
+      <!-- <div class="row center">
+        put in the charity stuff here i guess 
+        <img src="images/charity_map.jpg" alt="Map">
+        <figcaption>Locations where Hayden's charity effort goes</figcaption>
+      </div>
+      <br><br> -->
+      
+      <div class="row center">
+        <div id="graph1">
+          <!-- first graph -->
+        </div>
+        <br><br>
+        
+        <div id="graph2">
+          <!-- second graph -->
+        </div>
+      </div>
+
+      <br><br>
+
+      <br><br>
+
+    </div>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. We are doing this for our Term Project in 67-250, Information Systems Mileux.</p>
+        </div>
+        
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect with us!</h5>
+            <ul>
+              <a href="https://www.facebook.com/">
+              <img src="images/facebook.png" alt="Facebook Profile">
+              </a>
+              <a href="https://twitter.com/">
+                  <img src="images/twitter.png" alt="Twitter Profile">
+              </a>
+              <a href="https://www.instagram.com/">
+                  <img src="images/instagram.png" alt="Instagram Profile">
+              </a>
+              <a href="mailto:sbhotika@andrew.cmu.edu">
+                <img src="images/email.png" alt="Email">
+              </a>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  <script type="text/javascript" src="js/highcharts.js"></script>
+  <script type="text/javascript" src="js/modules/exporting.js"></script>
+
+  <script type="text/javascript">
+    
+    $(function () {
+        $('#graph1').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Charitable Donations'
+            },
+            xAxis: {
+                categories: [
+                    '2012',
+                    '2013',
+                    '2014',
+                    '2015',
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Shoes (thousands)'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Shoes sold',
+                data: [200, 600, 900, 1200]
+
+            }, {
+                name: 'Shoes to charity',
+                data: [60, 110, 190,300]
+            }]
+        });
+    });
+
+  </script>
+
+  <script type="text/javascript">
+    
+$(function () {
+    $('#graph2').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Shoes given to charity by each store location'
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Shoes to Charity(thousands)'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'Total quantity of shoes donated: <b>{point.y:.1f} millions</b>'
+        },
+        series: [{
+            name: 'Population',
+            data: [
+                ['Pittsburgh', 500],
+                ['Los Angeles', 70],
+                ['New York', 180],
+                ['Chicago', 130],
+                ['Mumbai', 300],
+               
+            ],
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+              }
+            }]
+        });
+    });
+
+  </script>
+
+  </body>
+</html>

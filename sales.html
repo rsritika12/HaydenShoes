@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="description" content="Dashboard for Hayden Shoes">
+  <meta name="author" content="Team 2">
+  <meta name="keywords" content="HTML, 67-250, Term Project, Hayden Shoes, Data analytics">
+  <title>Hayden Shoes</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><img src="images/brand_logo.png" alt="Brand Logo"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sales.html">Sales</a></li>
+        <li><a href="consumer_demographics.html">Consumer Demographics</a></li>
+        <li><a href="charity.html">Charity</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="sales.html">Sales</a></li>
+        <li><a href="consumer_demographics.html">Consumer Demographics</a></li>
+        <li><a href="charity.html">Charity</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Hayden Shoes</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Sales</h5>
+      </div>
+
+      <div class="row center">
+        <!-- put in the sales highcharts stuff here i guess -->
+
+        <div id="graph">
+          <!-- first graph -->
+        </div>
+        <br><br>
+
+        <div id="graph1">
+          <!-- second graph -->
+        </div>
+        <br><br>
+
+        <div id="graph2">
+          <!-- third graph -->
+        </div>
+        <br><br>
+
+        <div id="graph3">
+          <!-- fourth graph -->
+        </div>
+        <br><br>
+
+        <div id="graph4">
+          <!-- fourth graph -->
+        </div>
+
+      </div>
+      <br><br>
+
+      <br><br>
+
+    </div>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. We are doing this for our Term Project in 67-250, Information Systems Mileux.</p>
+        </div>
+        
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect with us!</h5>
+            <ul>
+              <a href="https://www.facebook.com/">
+              <img src="images/facebook.png" alt="Facebook Profile">
+              </a>
+              <a href="https://twitter.com/">
+                  <img src="images/twitter.png" alt="Twitter Profile">
+              </a>
+              <a href="https://www.instagram.com/">
+                  <img src="images/instagram.png" alt="Instagram Profile">
+              </a>
+              <a href="mailto:sbhotika@andrew.cmu.edu">
+                <img src="images/email.png" alt="Email">
+              </a>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  <script type="text/javascript" src="js/highcharts.js"></script>
+  <script type="text/javascript" src="js/modules/exporting.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+        $('#graph').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Most Popular Shoe (in thousands)'
+            },
+            
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Shoes (thousands)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            
+            series: [{
+                name: 'Shoes sold',
+                data: [
+                    ['Heels', 50],
+                    ['Flats', 30],
+                    ['Sneakers', 20],
+                    ['Boots', 14],
+                    ['Rain boots', 12],
+                    ['Sandals', 60],
+                    ['Flip flops', 30],
+                    ['Running Shoes', 11],
+                    ['Riding Shoes', 11],
+                    ['Ballet shoes', 10],
+                    ['High-top', 10],
+                    ['Dress shoes', 40],
+                    ['Moccasins', 20],
+                    ['Saddle Shoes', 9],
+                    ['Slippers', 9],
+                    ['Tennis Shoes', 9],
+                    ['Wedges', 80],
+                    ['Sling-backs', 8],
+                    ['Stilettos', 8],
+                    ['Loafers', 8], 
+                    ['Work boots', 8],
+                    ['Pumps', 40],
+                    ['Leather shoes', 10],
+                    ['Open-toes', 20]
+                ],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            }]
+        });
+    });
+
+
+  </script>
+  
+  <script type="text/javascript">
+
+  $(function () {
+    $('#graph1').highcharts({
+    chart: {
+      type: 'area'
+    },
+    title: {
+      text: 'Hayden Shoes Sales Channels'
+    },
+    subtitle: {
+      text: 'By % Sales'
+    },
+    xAxis: {
+      categories: ['2011', '2013', '2015'],
+      tickmarkPlacement: 'on',
+      title: {
+        enabled: false
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Percent'
+      }
+    },
+    tooltip: {
+      pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f})<br/>',
+      shared: true
+    },
+    plotOptions: {
+      area: {
+        stacking: 'percent',
+        lineColor: '#ffffff',
+        lineWidth: 1,
+        marker: {
+          lineWidth: 1,
+          lineColor: '#ffffff'
+        }
+      }
+    },
+    series: [{
+      name: 'Retailers',
+      data: [4.3, 30.3, 40.3]
+    }, {
+      name: 'eCommerce',
+      data: [95.7, 65.2, 53.0]
+    }, {
+      name: 'mCommerce',
+      data: [0.0, 4.5, 6.7]
+    }]
+  });
+});
+    </script>
+
+
+    <script type="text/javascript">
+      $(function () {
+    $('#graph2').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Total Sales by Hayden Shoes Locations (in millions)'
+        },
+
+        xAxis: {
+            categories: ['Los Angeles', 'New York', 'Pittsburgh', 'Chicago', 'Boston'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Total Sales (millions)',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 80,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: '2013',
+            data: [3, 4, 8, 1, 2]
+        }, {
+            name: '2014',
+            data: [3, 5, 10, 2, 4]
+        }, {
+            name: '2015',
+            data: [2, 4, 11, 2, 3]
+        }]
+    });
+});
+    </script>
+
+    <script type="text/javascript">
+      
+$(function () {
+    $('#graph3').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45
+            }
+        },
+        title: {
+            text: 'Segmentation of sales'
+        },
+       
+        plotOptions: {
+            pie: {
+                innerSize: 100,
+                depth: 45
+            }
+        },
+        series: [{
+            name: 'Percent of total sales',
+            data: [
+                ['Online', 72],
+                ['Store', 28],
+                
+            ]
+        }]
+    });
+});
+
+    </script>
+
+    <script type="text/javascript">
+      $(function () {
+        $('#graph4').highcharts({
+            title: {
+                text: 'Most popular shoe at each location',
+                x: -20 //center
+            },
+            xAxis: {
+                categories: ['Heels', 'Flats', 'Sneakers', 'Boots', 'Rain boots', 'Scandals',
+                    'Flip flops', 'Running shoes', 'Riding shoes', 'Ballet shoes', 'High tops', 'Dress shoes', 'Moccasins', 'Saddle shoes', 'Slippers', 'Tennis shoes', 'Wedges', 'Sling-backs', 'Stilettos', 'Loafers', 'Work boots', 'Pumps', 'Leather shoes', 'Open-toes']
+            },
+            yAxis: {
+                title: {
+                    text: 'Shoes sold (thousands)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '°C'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Pittsburgh',
+                data: [25, 15, 10, 2, 2, 1, 25, 10, 2, 2, 1, 3, 3, 3, 4, 14, 18, 21, 25.2, 10, 13, 2, 2, 1]
+            }, {
+                name: 'Chicago',
+                data: [10, 8, 8, 2, 1, 1, 14, 10, 2, 2, 1, 1, 4, 4, 5, 14, 18, 21, 25, 26, 10, 13, 2, 2, 1]
+            }, {
+                name: 'New York',
+                data: [8, 4, 6, 2, 1, 1, 12, 10, 2, 2, 1, 2, 2, 1, 9, 14, 18, 21, 25, 10, 13, 2, 2, 1]
+            }, {
+                name: 'Boston',
+                data: [6, 4, 4, 1, 1, 1, 10, 10, 2, 2, 1, 1, 1, 1, 9, 14, 18, 21, 25, 10, 13, 2, 2, 1]
+            }, {
+                name: 'Los Angeles',
+                data: [4, 2, 4, 1, 1, 0, 6, 10, 2, 2, 1, 1, 1, 1, 9, 14, 18, 21, 25, 10, 13, 2, 2, 1]
+            }]
+        });
+    });
+
+    </script>
+
+  </body>
+</html>
